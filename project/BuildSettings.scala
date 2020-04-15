@@ -1,5 +1,5 @@
-import io.gatling.build.MavenPublishKeys._
-import io.gatling.build.license._
+//import io.gatling.build.MavenPublishKeys._
+//import io.gatling.build.license._
 
 import sbt.Keys._
 import sbt._
@@ -8,9 +8,9 @@ import de.heikoseeberger.sbtheader.HeaderPlugin.autoImport._
 object BuildSettings {
 
   lazy val basicSettings = Seq(
-    headerLicense := ApacheV2License,
-    githubPath := "gatling/gatling",
-    projectDevelopers := developers,
+//    headerLicense := ApacheV2License,
+//    githubPath := "gatling/gatling",
+//    projectDevelopers := developers,
     parallelExecution in Test := false,
     licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
     // [fl]
@@ -37,12 +37,12 @@ object BuildSettings {
   //
   // [fl]
 
-  val developers = Seq(
-    GatlingDeveloper("slandelle@gatling.io", "Stephane Landelle", isGatlingCorp = true),
-    GatlingDeveloper("gcorre@gatling.io", "Guillaume Corré", isGatlingCorp = true),
-    GatlingDeveloper("ccousseran@gatling.io", "Cédric Cousseran", isGatlingCorp = true),
-    GatlingDeveloper("achaouat@gatling.io", "Alexandre Chaouat", isGatlingCorp = true)
-  )
+//  val developers = Seq(
+//    GatlingDeveloper("slandelle@gatling.io", "Stephane Landelle", isGatlingCorp = true),
+//    GatlingDeveloper("gcorre@gatling.io", "Guillaume Corré", isGatlingCorp = true),
+//    GatlingDeveloper("ccousseran@gatling.io", "Cédric Cousseran", isGatlingCorp = true),
+//    GatlingDeveloper("achaouat@gatling.io", "Alexandre Chaouat", isGatlingCorp = true)
+//  )
 
   // UTF-8
 

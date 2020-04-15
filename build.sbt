@@ -10,12 +10,15 @@ import VersionFile._
 // Root project
 
 ThisBuild / Keys.useCoursier := false
+credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
+
 
 lazy val root = Project("gatling-parent", file("."))
-  .enablePlugins(AutomateHeaderPlugin, SonatypeReleasePlugin, SphinxPlugin)
+  .enablePlugins(SphinxPlugin)
   .dependsOn(Seq(commons, core, http, jms, mqtt, jdbc, redis).map(_ % "compile->compile;test->test"): _*)
   .aggregate(nettyUtil, commons, core, jdbc, redis, httpClient, http, jms, mqtt, charts, graphite, app, recorder, testFramework, bundle, compiler)
   .settings(basicSettings)
+  .settings(publishTo := Some("Sonatype Nexus Repository Manager" at "https://nexus.bitorb.com/repository/maven-releases"))
   .settings(skipPublishing)
   .settings(libraryDependencies ++= docDependencies)
   .settings(unmanagedSourceDirectories in Test := ((sourceDirectory in Sphinx).value ** "code").get)
@@ -24,8 +27,8 @@ lazy val root = Project("gatling-parent", file("."))
 
 def gatlingModule(id: String) =
   Project(id, file(id))
-    .enablePlugins(AutomateHeaderPlugin, SonatypeReleasePlugin)
     .settings(gatlingModuleSettings)
+    .settings(publishTo := Some("Sonatype Nexus Repository Manager" at "https://nexus.bitorb.com/repository/maven-releases"))
 
 lazy val nettyUtil = gatlingModule("gatling-netty-util")
   .settings(libraryDependencies ++= nettyUtilDependencies)
